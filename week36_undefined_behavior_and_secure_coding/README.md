@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `ub.c`
 
 ## Build and run
 

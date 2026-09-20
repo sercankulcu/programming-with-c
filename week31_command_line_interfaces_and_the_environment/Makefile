@@ -12,11 +12,11 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main
+BINS := filter
 
 all: $(BINS)
 
-main: main.c
+filter: filter.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

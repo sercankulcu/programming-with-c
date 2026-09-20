@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `pointers.c`
 
 ## Build and run
 

@@ -12,11 +12,11 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?= -lpthread
 
-BINS := main
+BINS := concurrent
 
 all: $(BINS)
 
-main: main.c
+concurrent: concurrent.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

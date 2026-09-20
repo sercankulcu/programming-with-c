@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `convert.c`
 
 ## Build and run
 

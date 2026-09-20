@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `bits.c`
 
 ## Build and run
 

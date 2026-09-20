@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `layout.c`
 
 ## Build and run
 

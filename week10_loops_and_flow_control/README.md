@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `loops.c`
 
 ## Build and run
 

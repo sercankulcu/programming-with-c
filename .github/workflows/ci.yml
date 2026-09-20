@@ -1,0 +1,47 @@
+name: build
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  unix:
+    name: ${{ matrix.os }} · ${{ matrix.cc }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        cc: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Portable weeks
+        run: make CC=${{ matrix.cc }} portable
+      - name: POSIX weeks
+        run: make CC=${{ matrix.cc }} posix
+
+  windows:
+    name: windows · mingw-w64
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: false
+          install: mingw-w64-x86_64-gcc make
+      - name: Portable weeks only
+        run: make CC=gcc portable
+
+  embedded:
+    name: arm-none-eabi · qemu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cross toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi qemu-system-arm
+      - name: Embedded weeks
+        run: make embedded

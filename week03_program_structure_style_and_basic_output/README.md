@@ -4,10 +4,10 @@
 
 ## Files
 
-- `main.c`
-- `variant2.c`
-- `variant3.c`
-- `variant4.c`
+- `structure.c` — the annotated skeleton
+- `hello.c` — the same program with nothing added
+- `ugly.c` — the version this week asks you to read
+- `clean.c` — the same program, made readable
 
 ## Build and run
 

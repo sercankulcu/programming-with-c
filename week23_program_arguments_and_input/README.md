@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `scale.c`
 - `variant2.c`
 
 ## Build and run

@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `hello.c`
 
 ## Build and run
 

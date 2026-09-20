@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `portable.c`
 
 ## Build and run
 

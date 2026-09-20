@@ -8,7 +8,7 @@
 
 ## Files
 
-- `main.c`
+- `minishell.c`
 
 ## Build and run
 

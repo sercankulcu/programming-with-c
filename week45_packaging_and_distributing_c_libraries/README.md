@@ -5,7 +5,7 @@
 ## Files
 
 - `intarray.h`
-- `main.c`
+- `app.c`
 
 ## Build and run
 

@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `modern.c`
 
 ## Build and run
 

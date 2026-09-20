@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `params.c`
 
 ## Build and run
 

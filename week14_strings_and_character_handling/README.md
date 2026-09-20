@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `strings.c`
 
 ## Build and run
 

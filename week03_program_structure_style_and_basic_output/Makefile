@@ -5,26 +5,30 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main variant2 variant3 variant4
+# structure.c  the annotated skeleton
+# hello.c      the same program with nothing added
+# ugly.c       the version this week asks you to read
+# clean.c      the same program, made readable
+BINS := structure hello ugly clean
 
 all: $(BINS)
 
-main: main.c
+structure: structure.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
-variant2: variant2.c
+hello: hello.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
-variant3: variant3.c
+ugly: ugly.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
-variant4: variant4.c
-	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
+clean_prog: clean.c
+	$(CC) $(CFLAGS) $^ -o clean_prog $(LDLIBS)
 
 run: all
-	./main
+	./structure
 
 clean:
-	rm -f $(BINS) *.o *.exe
+	rm -f $(BINS) clean_prog *.o *.exe
 
 .PHONY: all run clean

@@ -12,11 +12,11 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main
+BINS := minishell
 
 all: $(BINS)
 
-main: main.c
+minishell: minishell.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

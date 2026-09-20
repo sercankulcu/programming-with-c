@@ -12,11 +12,11 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main
+BINS := evserver
 
 all: $(BINS)
 
-main: main.c
+evserver: evserver.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

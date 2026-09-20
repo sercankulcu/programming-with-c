@@ -5,11 +5,11 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main
+BINS := dynarray
 
 all: $(BINS)
 
-main: main.c
+dynarray: dynarray.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

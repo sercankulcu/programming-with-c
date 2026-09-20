@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `structs.c`
 
 ## Build and run
 

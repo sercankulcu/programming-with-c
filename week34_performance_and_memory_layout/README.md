@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `perf.c`
 
 ## Build and run
 

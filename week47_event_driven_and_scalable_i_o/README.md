@@ -8,7 +8,7 @@
 
 ## Files
 
-- `main.c`
+- `evserver.c`
 
 ## Build and run
 

@@ -5,11 +5,11 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main
+BINS := strings
 
 all: $(BINS)
 
-main: main.c
+strings: strings.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

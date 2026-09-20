@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `bugs.c`
 
 ## Build and run
 

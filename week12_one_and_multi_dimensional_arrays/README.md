@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `arrays.c`
 
 ## Build and run
 

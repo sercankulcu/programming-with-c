@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `dynarray.c`
 
 ## Build and run
 

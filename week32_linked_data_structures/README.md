@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `lists.c`
 
 ## Build and run
 

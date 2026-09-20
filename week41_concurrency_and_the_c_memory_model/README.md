@@ -8,7 +8,7 @@
 
 ## Files
 
-- `main.c`
+- `concurrent.c`
 
 ## Build and run
 

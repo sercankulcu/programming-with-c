@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `grades.c`
 
 ## Build and run
 

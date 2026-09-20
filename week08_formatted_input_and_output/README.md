@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `prompt.c`
 
 ## Build and run
 

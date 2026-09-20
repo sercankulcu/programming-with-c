@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `ptrmath.c`
 
 ## Build and run
 

@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `variants.c`
 
 ## Build and run
 

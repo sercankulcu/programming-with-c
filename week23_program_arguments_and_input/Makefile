@@ -5,11 +5,11 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main variant2
+BINS := scale variant2
 
 all: $(BINS)
 
-main: main.c
+scale: scale.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 variant2: variant2.c

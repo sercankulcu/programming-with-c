@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `adt.c`
 - `map.h`
 
 ## Build and run

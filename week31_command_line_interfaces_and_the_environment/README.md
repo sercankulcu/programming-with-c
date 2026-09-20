@@ -8,7 +8,7 @@
 
 ## Files
 
-- `main.c`
+- `filter.c`
 
 ## Build and run
 

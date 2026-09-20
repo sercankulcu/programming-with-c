@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `types.c`
 
 ## Build and run
 

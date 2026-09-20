@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `tests.c`
 
 ## Build and run
 

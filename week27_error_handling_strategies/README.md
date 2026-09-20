@@ -5,7 +5,7 @@
 ## Files
 
 - `csv.h`
-- `main.c`
+- `errors.c`
 
 ## Build and run
 
