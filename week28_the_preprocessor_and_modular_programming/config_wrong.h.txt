@@ -1,0 +1,2 @@
+/* config.h — WRONG */
+int verbose = 0;            /* a DEFINITION in a header */

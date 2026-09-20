@@ -1,0 +1,15 @@
+# The build must work on Linux and in QEMU, where a stray CR breaks a make
+# recipe and a shell script. Everything textual is LF in the repository.
+* text=auto eol=lf
+
+Makefile   text eol=lf
+*.mk       text eol=lf
+*.c        text eol=lf
+*.h        text eol=lf
+*.cpp      text eol=lf
+*.rs       text eol=lf
+*.py       text eol=lf
+*.ld       text eol=lf
+*.sh       text eol=lf
+*.yml      text eol=lf
+*.md       text eol=lf
