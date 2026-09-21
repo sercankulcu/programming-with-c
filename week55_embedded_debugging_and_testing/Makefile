@@ -1,21 +1,32 @@
-# Week 55 — Embedded Debugging and Testing
+# Week 55 - Embedded Debugging and Testing
 # Notes: https://sercankulcu.github.io/files/c/Week_55_Embedded_Debugging_and_Testing.html
 
-CC      ?= arm-none-eabi-gcc
-CFLAGS  ?= -mcpu=cortex-m3 -mthumb -std=c17 -Wall -Wextra -Wpedantic -g -Os -ffreestanding
-LDFLAGS ?= -nostdlib
+# The point of this week is that splitting the HAL out lets the protocol run
+# on the host, where a test can drive it through a fake and a debugger costs
+# nothing. So the default build is a host build with an ordinary compiler.
+#
+# hal_device.c is the ARM side; it is cross-compiled with the embedded weeks'
+# toolchain, not here. fuzz_protocol.c needs clang: `make fuzz`.
 
-ELF := firmware.elf
+CC      ?= cc
+CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 
-all: $(ELF)
+all: test_protocol
 
-$(ELF): fuzz_protocol.c hal_device.c protocol.c test_protocol.c
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+test_protocol: test_protocol.c protocol.c
+	$(CC) $(CFLAGS) $^ -o $@
 
-run: $(ELF)
-	qemu-system-arm -M lm3s6965evb -nographic -kernel $(ELF)
+run: test_protocol
+	./test_protocol
+
+fuzz: fuzz_protocol.c protocol.c
+	clang -std=c17 -g -O1 -fsanitize=fuzzer,address,undefined $^ -o fuzz_protocol
+
+device:
+	@echo "hal_device.c cross-compiles with the week 49-53 toolchain:"
+	@echo "  arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -c hal_device.c"
 
 clean:
-	rm -f *.elf *.o *.bin
+	rm -f test_protocol fuzz_protocol *.o *.exe crash-* leak-*
 
-.PHONY: all run clean
+.PHONY: all run fuzz device clean

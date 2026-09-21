@@ -4,3 +4,6 @@ typedef struct IntArray {
     size_t  count;
     size_t  capacity;
 } IntArray;
+
+#include <stddef.h>
+#include <stdbool.h>

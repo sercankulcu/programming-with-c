@@ -1,4 +1,7 @@
 /* map.h — the caller sees no implementation at all */
+#include <stddef.h>
+#include <stdbool.h>
+
 typedef struct Map Map;
 
 Map   *map_create(void);

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 /* ---------- enumeration with a checkable switch ---------- */
 

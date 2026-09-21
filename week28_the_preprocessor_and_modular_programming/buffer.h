@@ -1,4 +1,7 @@
 /* buffer.h — the caller sees a name, not a layout */
+#include <stddef.h>
+#include <stdbool.h>
+
 typedef struct Buffer Buffer;      /* incomplete type */
 
 Buffer *buffer_create(size_t capacity);

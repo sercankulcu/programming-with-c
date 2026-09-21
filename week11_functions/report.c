@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void try_to_double(int n)
 {
     n = n * 2;             /* modifies the copy */

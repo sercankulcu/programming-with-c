@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <errno.h>
 
 #define SAMPLES 100000
 #define BUCKETS 10

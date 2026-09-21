@@ -1,6 +1,7 @@
 /* fuzz_protocol.c */
 #include "protocol.h"
 #include <string.h>
+#include <stdlib.h>
 
 int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 {

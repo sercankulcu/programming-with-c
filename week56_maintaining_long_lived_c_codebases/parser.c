@@ -1,5 +1,6 @@
 /* parser.c — after the refactoring, before the behavior fixes */
 #include "parser.h"
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
