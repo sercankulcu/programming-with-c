@@ -5,9 +5,12 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := era
+BINS := era hello
 
 all: $(BINS)
+
+hello: hello.c
+	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 era: era.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)

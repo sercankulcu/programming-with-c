@@ -197,7 +197,7 @@ static bool map_remove(Map *m, const char *key)
 
 static size_t map_count(const Map *m)
 {
-    return m->count;
+    return m->count;                      /* maintained by put and remove */
 }
 
 static void map_stats(const Map *m)

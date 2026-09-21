@@ -4,7 +4,8 @@
 
 ## Files
 
-- `era.c`
+- `era.c` — the C89/C23 comparison
+- `hello.c` — week 1's program, used to walk the four translation phases
 
 ## Build and run
 

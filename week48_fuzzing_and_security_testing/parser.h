@@ -1,9 +1,4 @@
-/* parser.h — the interface the fuzz target drives.
- *
- * Config is opaque: the caller gets a pointer and never sees the layout.
- * That is week 28's technique, applied here so the fuzzer can only reach
- * the code through the same door a real caller would use.
- */
+/* parser.h */
 #ifndef PARSER_H
 #define PARSER_H
 

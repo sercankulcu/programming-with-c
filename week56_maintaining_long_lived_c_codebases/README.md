@@ -9,6 +9,7 @@
 - `legacy.h`
 - `parser.c`
 - `test_legacy.c`
+- `test_parser.c`
 
 ## Build and run
 
