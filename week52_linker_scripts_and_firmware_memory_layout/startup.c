@@ -36,3 +36,20 @@ void (* const vector_table[])(void) = {
     default_handler,               /* NMI                       */
     default_handler,               /* hard fault                */
 };
+
+/* Freestanding builds still need these: the compiler emits calls to them for
+   struct initialisation and array copies even when you never write them. */
+void *memset(void *dst, int c, unsigned long n)
+{
+    unsigned char *p = dst;
+    while (n--) { *p++ = (unsigned char)c; }
+    return dst;
+}
+
+void *memcpy(void *dst, const void *src, unsigned long n)
+{
+    unsigned char *d = dst;
+    const unsigned char *s = src;
+    while (n--) { *d++ = *s++; }
+    return dst;
+}

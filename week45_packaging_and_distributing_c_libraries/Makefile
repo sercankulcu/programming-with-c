@@ -11,7 +11,7 @@ BINS := app
 
 all: $(BINS)
 
-app: app.c
+app: app.c intarray.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

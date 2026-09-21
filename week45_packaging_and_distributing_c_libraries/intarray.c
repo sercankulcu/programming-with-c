@@ -76,3 +76,10 @@ bool intarray_get(const IntArray *a, size_t index, int *out)
 size_t intarray_count(const IntArray *a)    { assert(a); return a->count; }
 size_t intarray_capacity(const IntArray *a) { assert(a); return a->capacity; }
 void   intarray_clear(IntArray *a)          { assert(a); a->count = 0; }
+
+/* Part of the installed interface: lets a caller check at run time what it
+   is actually linked against, which may not be what it compiled against. */
+const char *intarray_version_string(void)
+{
+    return "2.3.0";
+}
