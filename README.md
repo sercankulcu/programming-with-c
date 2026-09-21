@@ -1,7 +1,9 @@
 # Procedural Programming with C — worked examples
 
+[![build](https://github.com/sercankulcu/programming-with-c/actions/workflows/ci.yml/badge.svg)](https://github.com/sercankulcu/programming-with-c/actions/workflows/ci.yml)
+
 Every compilable program from the 56-week course
-**[Procedural Programming with C](https://sercankulcu.github.io/teaching/programming-with-c/)**,
+**[Procedural Programming with C](https://sercankulcu.github.io/teaching/procedural-programming-with-c)**,
 one directory per week, each building on its own.
 
 The lecture notes are the course; this repository is the code from them. Each
@@ -33,10 +35,21 @@ another dialect.
 
 | Group | Weeks | Linux | macOS | Windows |
 |---|---|:-:|:-:|:-:|
-| Portable C | 1–28, 30, 32–38, 42–43, 45, 56 | ✅ | ✅ | ✅ native (MinGW/MSVC) |
-| POSIX | 31, 39, 40, 41, 47, 48 | ✅ | ✅ | WSL |
-| Cross-compiled | 49–55 | ✅ QEMU | ✅ QEMU | WSL |
+| Portable C | 1–28, 30, 32–38, 42–43, 45, 55–56 | ✅ | ✅ | ✅ native (MinGW/MSVC) |
+| POSIX | 31, 39–41 | ✅ | ✅ | WSL |
+| Linux-only | 47 (`epoll`), 48 (libFuzzer) | ✅ | — | WSL |
+| Cross-compiled | 49–54 | ✅ QEMU | ✅ QEMU | WSL |
 | Multi-language | 46 | ✅ | ✅ | WSL |
+
+Weeks 47 and 48 are the two that will not build anywhere else: `epoll` is a
+Linux interface with no macOS equivalent that teaches the same thing, and the
+libFuzzer that ships with Apple's clang cannot link a fuzz target. Their
+makefiles say so and stop rather than failing obscurely.
+
+Most weeks compile as `-std=c17`. The ones using POSIX interfaces use
+`-std=gnu17` instead: strict ISO mode hides `getopt`, `sigaction`,
+`getaddrinfo` and `clock_gettime` behind `__STRICT_ANSI__`, and the
+`_POSIX_C_SOURCE` macro that opens them on glibc *restricts* them on macOS.
 
 **On Windows**, install WSL once and you have everything:
 
@@ -61,11 +74,13 @@ xcode-select --install
 brew install qemu arm-none-eabi-gcc
 ```
 
-## Two weeks have no program
+## Two weeks have no program yet
 
-Week 29 is about Make, CMake and libraries, and week 44 is about reviewing
-somebody else's change. Their directories hold the build files and the
-before/after diff instead of a program to run.
+Week 29 is about Make, CMake and building libraries, and week 44 is about
+reviewing somebody else's change. Neither has a program to run, and their
+directories are currently empty apart from a README pointing at the notes —
+the makefiles and the worked review from those weeks have not been written up
+here yet.
 
 ## Licence
 
