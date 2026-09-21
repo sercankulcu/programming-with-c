@@ -9,7 +9,7 @@ LDLIBS  ?=
 # hello.c      the same program with nothing added
 # ugly.c       the version this week asks you to read
 # clean.c      the same program, made readable
-BINS := structure hello ugly clean
+BINS := structure hello ugly clean_prog
 
 all: $(BINS)
 

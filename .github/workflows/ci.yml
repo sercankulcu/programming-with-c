@@ -11,12 +11,15 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         cc: [gcc, clang]
+    env:
+      CC: ${{ matrix.cc }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Portable weeks
-        run: make CC=${{ matrix.cc }} portable
+        run: sh ci/build.sh PORTABLE
       - name: POSIX weeks
-        run: make CC=${{ matrix.cc }} posix
+        if: always()
+        run: sh ci/build.sh POSIX
 
   windows:
     name: windows · mingw-w64
@@ -24,24 +27,28 @@ jobs:
     defaults:
       run:
         shell: msys2 {0}
+    env:
+      CC: gcc
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64
           update: false
           install: mingw-w64-x86_64-gcc make
       - name: Portable weeks only
-        run: make CC=gcc portable
+        run: sh ci/build.sh PORTABLE
 
   embedded:
     name: arm-none-eabi · qemu
     runs-on: ubuntu-latest
+    env:
+      CC: arm-none-eabi-gcc
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install cross toolchain
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc-arm-none-eabi qemu-system-arm
       - name: Embedded weeks
-        run: make embedded
+        run: sh ci/build.sh EMBEDDED
