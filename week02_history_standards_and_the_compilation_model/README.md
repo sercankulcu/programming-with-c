@@ -4,7 +4,7 @@
 
 ## Files
 
-- `hello.c`
+- `era.c`
 
 ## Build and run
 
@@ -19,23 +19,23 @@ These are the commands the lecture notes ask you to run — including the ones t
 are supposed to fail.
 
 ```bash
-gcc -E hello.c -o hello.i
-wc -l hello.i
+gcc -E era.c -o era.i
+wc -l era.i
 ```
 
 ```bash
-gcc -S hello.c -o hello.s
-cat hello.s
+gcc -S era.c -o era.s
+cat era.s
 ```
 
 ```bash
-gcc -c hello.c -o hello.o
-file hello.o
-nm hello.o
+gcc -c era.c -o era.o
+file era.o
+nm era.o
 ```
 
 ```bash
-gcc hello.o -o hello
+gcc era.o -o hello
 ./hello
 ```
 

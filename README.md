@@ -35,8 +35,8 @@ another dialect.
 
 | Group | Weeks | Linux | macOS | Windows |
 |---|---|:-:|:-:|:-:|
-| Portable C | 1–28, 30, 32–38, 42–43, 45, 55–56 | ✅ | ✅ | ✅ native (MinGW/MSVC) |
-| POSIX | 31, 39–41 | ✅ | ✅ | WSL |
+| Portable C | 1–30, 32–38, 42–43, 45, 55–56 | ✅ | ✅ | ✅ native (MinGW/MSVC) |
+| POSIX | 31, 39–41, 44 | ✅ | ✅ | WSL |
 | Linux-only | 47 (`epoll`), 48 (libFuzzer) | ✅ | — | WSL |
 | Cross-compiled | 49–54 | ✅ QEMU | ✅ QEMU | WSL |
 | Multi-language | 46 | ✅ | ✅ | WSL |
@@ -74,13 +74,14 @@ xcode-select --install
 brew install qemu arm-none-eabi-gcc
 ```
 
-## Two weeks have no program yet
+## Two weeks are read, not run
 
-Week 29 is about Make, CMake and building libraries, and week 44 is about
-reviewing somebody else's change. Neither has a program to run, and their
-directories are currently empty apart from a README pointing at the notes —
-the makefiles and the worked review from those weeks have not been written up
-here yet.
+Week 29 is about building, so its makefile builds the same module four ways -
+plainly, instrumented, as a static library and as a shared one - and includes
+the linking-order failure as a target that is meant to fail. Week 44 is about
+reviewing somebody else's change, so it ships the diff as submitted and the
+version that came out of the review; the function still compiles on its own,
+because surviving `-Wall -Wextra` is part of reviewing it.
 
 ## Licence
 

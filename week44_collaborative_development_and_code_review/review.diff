@@ -1,0 +1,31 @@
+--- a/src/config.c
++++ b/src/config.c
+@@ -40,6 +40,38 @@ static Config *global_config = NULL;
++/* Load a configuration file and install it. */
++int config_reload(const char *path)
++{
++    FILE *f = fopen(path, "r");
++    if (!f) return -1;
++
++    char *buf = malloc(8192);
++    fread(buf, 1, 8192, f);
++
++    free(global_config);
++    global_config = malloc(sizeof(Config));
++
++    char *line = strtok(buf, "\n");
++    while (line) {
++        char key[32], value[64];
++        sscanf(line, "%s = %s", key, value);
++
++        if (strcmp(key, "timeout")) {
++            global_config->timeout = atoi(value);
++        } else if (strcmp(key, "name") == 0) {
++            strcpy(global_config->name, value);
++        }
++        line = strtok(NULL, "\n");
++    }
++
++    fclose(f);
++    return 0;
++}

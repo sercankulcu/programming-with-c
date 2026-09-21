@@ -5,15 +5,15 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := hello
+BINS := era
 
 all: $(BINS)
 
-hello: hello.c
+era: era.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./hello
+	./era
 
 clean:
 	rm -f $(BINS) *.o *.exe

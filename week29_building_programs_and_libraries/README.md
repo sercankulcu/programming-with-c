@@ -2,11 +2,22 @@
 
 📖 **[Lecture notes](https://sercankulcu.github.io/files/c/Week_29_Building_and_Libraries.html)** — read these first; the code here is the worked example from that page.
 
+## Files
+
+- `intarray.h`, `intarray.c` — week 28's module, unchanged
+- `main.c` — a caller that only sees the header
+- `Makefile` — the four builds below
+- `CMakeLists.txt` — the same project, described declaratively
+
 ## Build and run
 
 ```bash
-make
-make run
+make            # 1. straight build, object by object
+make asan       # 2. the same thing instrumented
+make static     # 3. into a static library
+make shared     # 4. into a shared library
+make wrong-order  # the linking-order failure, on purpose
+make -n         # print the commands without running them
 ```
 
 ## Experiments from the notes

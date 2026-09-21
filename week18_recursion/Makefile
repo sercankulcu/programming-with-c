@@ -5,15 +5,15 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main
+BINS := recur
 
 all: $(BINS)
 
-main: main.c
+recur: recur.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./recur
 
 clean:
 	rm -f $(BINS) *.o *.exe

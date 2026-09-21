@@ -2,6 +2,15 @@
 
 📖 **[Lecture notes](https://sercankulcu.github.io/files/c/Week_44_Collaborative_Development_and_Code_Review.html)** — read these first; the code here is the worked example from that page.
 
+## Files
+
+- `review.diff` — the change exactly as it was submitted for review
+- `config.c` — the version that came out of the review
+- `config.h` — the surrounding declarations, so the function compiles alone
+
+Read the diff first and write your own review before reading the one in the
+notes.
+
 ## Build and run
 
 ```bash

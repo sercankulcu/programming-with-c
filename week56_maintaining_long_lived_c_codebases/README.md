@@ -27,9 +27,9 @@ gcc -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes ..
 ```
 
 ```bash
-gcc -O2 -S old.c -o old.s
-gcc -O2 -S new.c -o new.s
-diff old.s new.s        # identical means the behavior cannot have changed
+gcc -O2 -S -w legacy.c -o legacy.s
+gcc -O2 -S -w parser.c -o parser.s
+diff legacy.s parser.s        # identical means the behavior cannot have changed
 ```
 
 ```bash
@@ -44,8 +44,8 @@ gcc -w -o characterize characterize.c legacy.c && ./characterize > pinned.h
 
 ```bash
 gcc -std=c17 -Wall -Wextra -Wstrict-prototypes -Wold-style-definition \
-    -g -fsanitize=address,undefined -o test_parser test_parser.c parser.c
-./test_parser
+    -g -fsanitize=address,undefined -c parser.c -o parser.o
+./test_legacy
 ```
 
 ```bash

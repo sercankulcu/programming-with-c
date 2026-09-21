@@ -4,7 +4,7 @@
 
 ## Files
 
-- `main.c`
+- `recur.c`
 - `recur.c`
 
 ## Build and run

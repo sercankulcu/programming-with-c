@@ -23,7 +23,7 @@ These are the commands the lecture notes ask you to run — including the ones t
 are supposed to fail.
 
 ```bash
-gcc -O2 -S -masm=intel example.c -o example.s
+gcc -O2 -S -masm=intel mathlib.c -o mathlib.s
 ```
 
 ```bash
