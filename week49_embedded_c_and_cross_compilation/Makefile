@@ -1,24 +1,36 @@
-# Week 49 — Embedded C and Cross-Compilation
+# Week 49 - Embedded C and Cross-Compilation
 # Notes: https://sercankulcu.github.io/files/c/Week_49_Embedded_C_and_Cross_Compilation.html
+
+# Sources are picked up from the directory rather than listed, so the shared
+# startup code and linker script carried forward from week 49 are always in
+# the build.
+#
+# -nostdlib drops libgcc too, but the compiler still emits calls into it for
+# 64-bit division, so it is linked back explicitly.
 
 CC      ?= arm-none-eabi-gcc
 CFLAGS  ?= -mcpu=cortex-m3 -mthumb -std=c17 -Wall -Wextra -Wpedantic -g -Os -ffreestanding
-# -nostdlib drops libgcc too, but the compiler still emits calls into
-# it for 64-bit division and for struct initialisation. Link it back.
-LDLIBS  ?= -lgcc
 LDFLAGS ?= -nostdlib -T firmware.ld
+LDLIBS  ?= -lgcc
 
+SRC := $(wildcard *.c)
 ELF := firmware.elf
 
 all: $(ELF)
 
-$(ELF): main.c startup.c
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
+$(ELF): $(SRC) firmware.ld
+	$(CC) $(CFLAGS) $(LDFLAGS) $(SRC) -o $@ $(LDLIBS)
 
 run: $(ELF)
 	qemu-system-arm -M lm3s6965evb -nographic -kernel $(ELF)
 
-clean:
-	rm -f *.elf *.o *.bin
+debug: $(ELF)
+	qemu-system-arm -M lm3s6965evb -nographic -s -S -kernel $(ELF)
 
-.PHONY: all run clean
+size: $(ELF)
+	arm-none-eabi-size $(ELF)
+
+clean:
+	rm -f *.elf *.o *.bin *.map
+
+.PHONY: all run debug size clean
