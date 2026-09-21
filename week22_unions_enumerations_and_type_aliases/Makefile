@@ -13,7 +13,7 @@ variants: variants.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./variants
 
 clean:
 	rm -f $(BINS) *.o *.exe

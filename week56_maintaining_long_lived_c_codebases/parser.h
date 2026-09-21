@@ -13,6 +13,6 @@
    (always terminated) and the number to out_value. Returns false and leaves
    the outputs untouched if the line does not parse. */
 bool parse_record(const char *line, char *out_name, size_t name_size,
-                  long *out_value);
+                  int *out_value);
 
 #endif /* PARSER_H */

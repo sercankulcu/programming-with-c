@@ -13,7 +13,7 @@ hello: hello.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./hello
 
 clean:
 	rm -f $(BINS) *.o *.exe

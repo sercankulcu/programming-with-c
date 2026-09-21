@@ -13,7 +13,7 @@ toolbox: toolbox.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./toolbox
 
 clean:
 	rm -f $(BINS) *.o *.exe

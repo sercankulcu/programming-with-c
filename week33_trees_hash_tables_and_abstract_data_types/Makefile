@@ -13,7 +13,7 @@ adt: adt.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./adt
 
 clean:
 	rm -f $(BINS) *.o *.exe

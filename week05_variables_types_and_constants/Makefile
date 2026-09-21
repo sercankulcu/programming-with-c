@@ -13,7 +13,7 @@ types: types.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./types
 
 clean:
 	rm -f $(BINS) *.o *.exe

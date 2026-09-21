@@ -13,7 +13,7 @@ dynarray: dynarray.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./dynarray
 
 clean:
 	rm -f $(BINS) *.o *.exe

@@ -13,7 +13,7 @@ grades: grades.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./grades
 
 clean:
 	rm -f $(BINS) *.o *.exe

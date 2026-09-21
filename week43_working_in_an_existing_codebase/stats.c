@@ -1,4 +1,3 @@
-cat > stats.c <<'EOF'
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,11 +30,3 @@ int main(int argc, char *argv[])
     free(v);
     return 0;
 }
-EOF
-cat > check.sh <<'EOF'
-#!/bin/sh
-gcc -std=c17 -Wall -Wextra -o stats stats.c 2>/dev/null || exit 125
-./stats 1 2 3 | grep -q "count 3 mean 2.00 max 3"
-EOF
-chmod +x check.sh
-git add . && git commit -qm "Add stats tool"

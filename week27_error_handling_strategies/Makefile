@@ -13,7 +13,7 @@ errors: errors.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./errors
 
 clean:
 	rm -f $(BINS) *.o *.exe

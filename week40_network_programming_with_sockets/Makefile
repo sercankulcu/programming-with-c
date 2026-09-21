@@ -9,7 +9,11 @@ all run clean:
 else
 
 CC      ?= cc
-CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
+# This week uses POSIX interfaces. -std=c17 hides them behind
+# __STRICT_ANSI__, and _POSIX_C_SOURCE opens them on glibc but *restricts*
+# them on macOS. -std=gnu17 is the one setting that works on all three
+# libcs; the language accepted is still C17.
+CFLAGS  ?= -std=gnu17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
 BINS := echoclient echoserver

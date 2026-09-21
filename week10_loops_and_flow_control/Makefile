@@ -13,7 +13,7 @@ loops: loops.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./loops
 
 clean:
 	rm -f $(BINS) *.o *.exe

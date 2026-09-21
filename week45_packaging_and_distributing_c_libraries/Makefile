@@ -2,7 +2,9 @@
 # Notes: https://sercankulcu.github.io/files/c/Week_45_Packaging_and_Distributing_Libraries.html
 
 CC      ?= cc
-CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
+# app.c uses <intarray.h>, the way a consumer of the installed
+# library would; -I. stands in for the install prefix.
+CFLAGS  ?= -I. -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
 BINS := app
@@ -13,7 +15,7 @@ app: app.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./app
 
 clean:
 	rm -f $(BINS) *.o *.exe

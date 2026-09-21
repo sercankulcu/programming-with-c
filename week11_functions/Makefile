@@ -19,7 +19,7 @@ variant3: variant3.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./report
 
 clean:
 	rm -f $(BINS) *.o *.exe

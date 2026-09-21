@@ -13,7 +13,7 @@ ptrmath: ptrmath.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./ptrmath
 
 clean:
 	rm -f $(BINS) *.o *.exe

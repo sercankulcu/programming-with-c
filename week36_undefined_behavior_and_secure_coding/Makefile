@@ -13,7 +13,7 @@ ub: ub.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./ub
 
 clean:
 	rm -f $(BINS) *.o *.exe

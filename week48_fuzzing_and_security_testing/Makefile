@@ -3,8 +3,19 @@
 
 # libFuzzer needs clang. The sanitizers are not optional here: without them the
 # fuzzer generates crashing input and never notices.
-CC     ?= clang
-CFLAGS ?= -std=c17 -Wall -Wextra -g -O1 -fsanitize=fuzzer,address,undefined
+# libFuzzer is clang-only, so this one ignores any CC from the
+# environment rather than failing confusingly under gcc.
+UNAME_S := $(shell uname -s)
+
+ifneq ($(UNAME_S),Linux)
+all run clean:
+	@echo "Week 48 uses libFuzzer as shipped with the distribution clang, which is Linux-only."
+	@echo "On macOS or Windows, run it under a Linux container or VM."
+.PHONY: all run clean
+else
+
+CC     := clang
+CFLAGS ?= -std=gnu17 -Wall -Wextra -g -O1 -fsanitize=fuzzer,address,undefined
 
 all: fuzz_parser
 
@@ -22,3 +33,5 @@ clean:
 	rm -rf corpus
 
 .PHONY: all run clean
+
+endif

@@ -13,7 +13,7 @@ lists: lists.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./lists
 
 clean:
 	rm -f $(BINS) *.o *.exe

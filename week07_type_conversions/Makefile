@@ -13,7 +13,7 @@ convert: convert.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./convert
 
 clean:
 	rm -f $(BINS) *.o *.exe

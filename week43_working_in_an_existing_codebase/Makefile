@@ -5,15 +5,15 @@ CC      ?= cc
 CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
-BINS := main
+BINS := stats
 
 all: $(BINS)
 
-main: main.c
+stats: stats.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./stats
 
 clean:
 	rm -f $(BINS) *.o *.exe

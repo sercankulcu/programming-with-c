@@ -13,7 +13,7 @@ params: params.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./params
 
 clean:
 	rm -f $(BINS) *.o *.exe

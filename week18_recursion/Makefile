@@ -9,7 +9,7 @@ BINS := main
 
 all: $(BINS)
 
-main: main.c recur.c
+main: main.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

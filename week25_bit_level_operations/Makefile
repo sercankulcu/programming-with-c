@@ -13,7 +13,7 @@ bits: bits.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./bits
 
 clean:
 	rm -f $(BINS) *.o *.exe

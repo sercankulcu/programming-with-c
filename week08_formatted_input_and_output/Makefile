@@ -13,7 +13,7 @@ prompt: prompt.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./prompt
 
 clean:
 	rm -f $(BINS) *.o *.exe

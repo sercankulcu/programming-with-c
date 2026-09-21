@@ -9,7 +9,7 @@ BINS := main
 
 all: $(BINS)
 
-main: main.c buffer.c intarray.c
+main: main.c intarray.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all

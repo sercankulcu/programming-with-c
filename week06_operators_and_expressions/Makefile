@@ -13,7 +13,7 @@ expr: expr.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./expr
 
 clean:
 	rm -f $(BINS) *.o *.exe

@@ -1,5 +1,3 @@
-mkdir -p /tmp/consumer && cd /tmp/consumer
-cat > app.c <<'EOF'
 #include <intarray.h>
 #include <stdio.h>
 
@@ -16,10 +14,3 @@ int main(void)
     intarray_destroy(a);
     return 0;
 }
-EOF
-
-export PKG_CONFIG_PATH=/tmp/stage/usr/lib/pkgconfig
-pkg-config --cflags --libs intarray
-gcc app.c $(pkg-config --cflags --libs intarray) -o app
-LD_LIBRARY_PATH=/tmp/stage/usr/lib ./app
-ldd app | grep intarray

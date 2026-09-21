@@ -1,15 +1,22 @@
 # Week 47 — Event-Driven and Scalable I/O
 # Notes: https://sercankulcu.github.io/files/c/Week_47_Event_Driven_and_Scalable_IO.html
 
-ifeq ($(OS),Windows_NT)
+
+UNAME_S := $(shell uname -s)
+
+ifneq ($(UNAME_S),Linux)
 all run clean:
-	@echo "Week 47 uses POSIX APIs with no Windows equivalent worth teaching here."
-	@echo "Run it under WSL. See the README in this directory."
+	@echo "Week 47 uses epoll, which is Linux-only."
+	@echo "On macOS or Windows, run it under a Linux container or VM."
 .PHONY: all run clean
 else
 
 CC      ?= cc
-CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
+# This week uses POSIX interfaces. -std=c17 hides them behind
+# __STRICT_ANSI__, and _POSIX_C_SOURCE opens them on glibc but *restricts*
+# them on macOS. -std=gnu17 is the one setting that works on all three
+# libcs; the language accepted is still C17.
+CFLAGS  ?= -std=gnu17 -Wall -Wextra -Wpedantic -g
 LDLIBS  ?=
 
 BINS := evserver
@@ -20,7 +27,7 @@ evserver: evserver.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./evserver
 
 clean:
 	rm -f $(BINS) *.o *.exe

@@ -13,7 +13,7 @@ layout: layout.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./layout
 
 clean:
 	rm -f $(BINS) *.o *.exe

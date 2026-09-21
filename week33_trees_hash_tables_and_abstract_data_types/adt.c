@@ -195,6 +195,11 @@ static bool map_remove(Map *m, const char *key)
     return false;
 }
 
+static size_t map_count(const Map *m)
+{
+    return m->count;
+}
+
 static void map_stats(const Map *m)
 {
     size_t used = 0, longest = 0;
@@ -286,7 +291,7 @@ int main(void)
     map_put(m, "gamma", 999);
     map_get(m, "gamma", &value, NULL);
     printf("  after replacing: gamma = %d, count still %zu\n",
-           value, map_count_placeholder(m));
+           value, map_count(m));
 
     printf("  remove \"beta\": %s\n", map_remove(m, "beta") ? "yes" : "no");
     map_stats(m);

@@ -13,7 +13,7 @@ tests: tests.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./tests
 
 clean:
 	rm -f $(BINS) *.o *.exe

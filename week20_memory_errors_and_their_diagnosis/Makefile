@@ -13,7 +13,7 @@ bugs: bugs.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./bugs
 
 clean:
 	rm -f $(BINS) *.o *.exe

@@ -13,7 +13,7 @@ structs: structs.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./structs
 
 clean:
 	rm -f $(BINS) *.o *.exe

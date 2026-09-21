@@ -13,7 +13,7 @@ strings: strings.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./strings
 
 clean:
 	rm -f $(BINS) *.o *.exe

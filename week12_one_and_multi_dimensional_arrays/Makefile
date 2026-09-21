@@ -13,7 +13,7 @@ arrays: arrays.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./arrays
 
 clean:
 	rm -f $(BINS) *.o *.exe

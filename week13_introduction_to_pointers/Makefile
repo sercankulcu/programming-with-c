@@ -13,7 +13,7 @@ pointers: pointers.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./pointers
 
 clean:
 	rm -f $(BINS) *.o *.exe

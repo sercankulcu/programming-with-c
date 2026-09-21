@@ -13,7 +13,7 @@ files: files.c
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
 run: all
-	./main
+	./files
 
 clean:
 	rm -f $(BINS) *.o *.exe
