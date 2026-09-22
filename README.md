@@ -1,9 +1,9 @@
-# Procedural Programming with C — worked examples
+# Programming with C — worked examples
 
 [![build](https://github.com/sercankulcu/programming-with-c/actions/workflows/ci.yml/badge.svg)](https://github.com/sercankulcu/programming-with-c/actions/workflows/ci.yml)
 
 Every compilable program from the 56-week course
-**[Procedural Programming with C](https://sercankulcu.github.io/teaching/procedural-programming-with-c)**,
+**[Programming with C](https://sercankulcu.github.io/teaching/programming-with-c)**,
 one directory per week, each building on its own.
 
 The lecture notes are the course; this repository is the code from them. Each
