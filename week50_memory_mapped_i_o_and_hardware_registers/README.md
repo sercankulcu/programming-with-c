@@ -25,7 +25,7 @@ are supposed to fail.
 ```bash
 arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb \
     -ffreestanding -nostdlib -O2 -Wall -Wextra -g \
-    -T firmware.ld -o firmware.elf startup.c uart.c main.c
+    -T firmware.ld -o firmware.elf startup.c uart.c main.c -lgcc
 
 qemu-system-arm -M lm3s6965evb -nographic -kernel firmware.elf
 ```

@@ -1,4 +1,5 @@
 /* startup.c */
+#include <stddef.h>
 #include <stdint.h>
 
 extern uint32_t _stack_top;
@@ -28,25 +29,59 @@ void reset_handler(void)
 
 static void default_handler(void) { for (;;) { } }
 
-/* The vector table: the processor reads [0] and [1] at reset. */
+/* The handlers live in interrupts.c. */
+void systick_handler(void);
+void uart0_handler(void);
+
+/* The vector table: the processor reads [0] and [1] at reset. Week 49
+   stopped after four entries; taking interrupts needs the whole core block
+   plus the device IRQs up to the last one used. On the LM3S6965 the UART0
+   interrupt is IRQ 5, which is entry 16 + 5 = 21. Every slot that is not
+   reserved gets a handler: a zero would send an unexpected interrupt to
+   address 0, which holds the stack pointer, not code. */
 __attribute__((section(".vectors"), used))
 void (* const vector_table[])(void) = {
-    (void (*)(void))&_stack_top,   /* [0] initial stack pointer */
-    reset_handler,                 /* [1] reset                 */
-    default_handler,               /* NMI                       */
-    default_handler,               /* hard fault                */
+    (void (*)(void))&_stack_top,   /* [0]  initial stack pointer */
+    reset_handler,                 /* [1]  reset                 */
+    default_handler,               /* [2]  NMI                   */
+    default_handler,               /* [3]  hard fault            */
+    default_handler,               /* [4]  memory management     */
+    default_handler,               /* [5]  bus fault             */
+    default_handler,               /* [6]  usage fault           */
+    0, 0, 0, 0,                    /* [7..10] reserved           */
+    default_handler,               /* [11] SVCall                */
+    default_handler,               /* [12] debug monitor         */
+    0,                             /* [13] reserved              */
+    default_handler,               /* [14] PendSV                */
+    systick_handler,               /* [15] SysTick               */
+    /* [16] onwards: device interrupts, IRQ n at 16 + n */
+    default_handler,               /* [16] IRQ 0  GPIO port A    */
+    default_handler,               /* [17] IRQ 1  GPIO port B    */
+    default_handler,               /* [18] IRQ 2  GPIO port C    */
+    default_handler,               /* [19] IRQ 3  GPIO port D    */
+    default_handler,               /* [20] IRQ 4  GPIO port E    */
+    uart0_handler,                 /* [21] IRQ 5  UART0          */
 };
 
 /* Freestanding builds still need these: the compiler emits calls to them for
-   struct initialisation and array copies even when you never write them. */
-void *memset(void *dst, int c, unsigned long n)
+   struct initialisation and array copies even when you never write them.
+   GCC can also recognise the loops below as memset and memcpy and replace
+   them with a call - to themselves. Clang never does that inside functions
+   with these names; GCC has to be told, and only GCC knows the attribute. */
+#if defined(__GNUC__) && !defined(__clang__)
+#define NO_LIBCALL __attribute__((optimize("no-tree-loop-distribute-patterns")))
+#else
+#define NO_LIBCALL
+#endif
+
+NO_LIBCALL void *memset(void *dst, int c, size_t n)
 {
     unsigned char *p = dst;
     while (n--) { *p++ = (unsigned char)c; }
     return dst;
 }
 
-void *memcpy(void *dst, const void *src, unsigned long n)
+NO_LIBCALL void *memcpy(void *dst, const void *src, size_t n)
 {
     unsigned char *d = dst;
     const unsigned char *s = src;

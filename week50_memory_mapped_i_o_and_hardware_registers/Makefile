@@ -8,7 +8,14 @@
 # -nostdlib drops libgcc too, but the compiler still emits calls into it for
 # 64-bit division, so it is linked back explicitly.
 
-CC      ?= arm-none-eabi-gcc
+# make defines CC as `cc` before it reads this file, so `CC ?=` alone would
+# never take effect and a plain `make` would reach for the host compiler.
+# Replace only make's built-in default; a CC from the command line or the
+# environment still wins.
+
+ifeq ($(origin CC),default)
+CC       = arm-none-eabi-gcc
+endif
 CFLAGS  ?= -mcpu=cortex-m3 -mthumb -std=c17 -Wall -Wextra -Wpedantic -g -Os -ffreestanding
 LDFLAGS ?= -nostdlib -T firmware.ld
 LDLIBS  ?= -lgcc

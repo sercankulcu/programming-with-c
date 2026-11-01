@@ -8,6 +8,8 @@
 ## Files
 
 - `interrupts.c`
+- `startup.c` — week 49's startup code, with the vector table grown to hold `systick_handler` (entry 15) and `uart0_handler` (IRQ 5, entry 21)
+- `firmware.ld`
 
 ## Build and run
 
@@ -24,7 +26,7 @@ are supposed to fail.
 ```bash
 arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb \
     -ffreestanding -nostdlib -O2 -Wall -Wextra -g \
-    -T firmware.ld -o firmware.elf startup.c interrupts.c
+    -T firmware.ld -o firmware.elf startup.c interrupts.c -lgcc
 
 qemu-system-arm -M lm3s6965evb -nographic -kernel firmware.elf
 ```

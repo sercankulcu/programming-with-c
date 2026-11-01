@@ -164,7 +164,7 @@ int main(void)
     puts_raw("' after "); put_uint(spins); puts_raw(" wasted iterations\n");
 
     /* --- 2. interrupts: the loop does other work --- */
-    systick_init(18000);               /* about 1 kHz */
+    systick_init(12500);               /* 1 kHz at QEMU's 12.5 MHz */
     uart_irq_init();
     puts_raw("\ninterrupts enabled; type freely, 'q' ends\n");
 

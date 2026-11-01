@@ -1,4 +1,5 @@
 /* startup.c */
+#include <stddef.h>
 #include <stdint.h>
 
 extern uint32_t _stack_top;
@@ -38,15 +39,24 @@ void (* const vector_table[])(void) = {
 };
 
 /* Freestanding builds still need these: the compiler emits calls to them for
-   struct initialisation and array copies even when you never write them. */
-void *memset(void *dst, int c, unsigned long n)
+   struct initialisation and array copies even when you never write them.
+   GCC can also recognise the loops below as memset and memcpy and replace
+   them with a call - to themselves. Clang never does that inside functions
+   with these names; GCC has to be told, and only GCC knows the attribute. */
+#if defined(__GNUC__) && !defined(__clang__)
+#define NO_LIBCALL __attribute__((optimize("no-tree-loop-distribute-patterns")))
+#else
+#define NO_LIBCALL
+#endif
+
+NO_LIBCALL void *memset(void *dst, int c, size_t n)
 {
     unsigned char *p = dst;
     while (n--) { *p++ = (unsigned char)c; }
     return dst;
 }
 
-void *memcpy(void *dst, const void *src, unsigned long n)
+NO_LIBCALL void *memcpy(void *dst, const void *src, size_t n)
 {
     unsigned char *d = dst;
     const unsigned char *s = src;

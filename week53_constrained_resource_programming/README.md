@@ -26,7 +26,7 @@ arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb \
     -ffreestanding -nostdlib -Os -Wall -Wextra -g \
     -ffunction-sections -fdata-sections -Wl,--gc-sections \
     -T firmware.ld -Wl,-Map=firmware.map \
-    -o firmware.elf startup.c constrained.c
+    -o firmware.elf startup.c constrained.c -lgcc
 
 arm-none-eabi-size firmware.elf
 qemu-system-arm -M lm3s6965evb -nographic -kernel firmware.elf

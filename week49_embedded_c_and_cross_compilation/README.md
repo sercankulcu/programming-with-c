@@ -41,7 +41,7 @@ arm-none-eabi-gcc -ffreestanding -nostdlib ..
 ```bash
 arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb \
     -ffreestanding -nostdlib -O2 -Wall -Wextra -g \
-    -T firmware.ld -o firmware.elf startup.c main.c
+    -T firmware.ld -o firmware.elf startup.c main.c -lgcc
 
 arm-none-eabi-objcopy -O binary firmware.elf firmware.bin
 arm-none-eabi-size firmware.elf
