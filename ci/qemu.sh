@@ -69,6 +69,10 @@ while read -r d elf input want; do
     cat "$log"
     if grep -qF -- "$want" "$log"; then
         printf '| `%s` | %s | ok |\n' "$d" "$elf" >> "$summary"
+        # The notes quote these numbers; a notice shows them on the run page
+        # without opening the log.
+        nums=$(grep -E 'WORST|free heap|sensor :' "$log" | tr -s ' ' | tr '\n' ';')
+        [ -n "$nums" ] && printf '::notice title=%s/%s::%s\n' "$d" "$elf" "$nums"
     else
         failed="$failed $d/$elf"
         printf '| `%s` | %s | **FAILED**: no "%s" |\n' "$d" "$elf" "$want" >> "$summary"

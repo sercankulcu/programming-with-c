@@ -22,7 +22,7 @@ jobs:
         run: sh ci/build.sh POSIX
 
   windows:
-    name: windows · mingw-w64
+    name: windows · mingw-w64 (ucrt64)
     runs-on: windows-latest
     defaults:
       run:
@@ -33,9 +33,9 @@ jobs:
       - uses: actions/checkout@v5
       - uses: msys2/setup-msys2@v2
         with:
-          msystem: MINGW64
+          msystem: UCRT64
           update: false
-          install: mingw-w64-x86_64-gcc make
+          install: mingw-w64-ucrt-x86_64-gcc make
       - name: Portable weeks only
         run: sh ci/build.sh PORTABLE
 
