@@ -4,7 +4,10 @@
 
 ## Files
 
-- `main.c`
+- `stats.c` — the small program used for the bisect demo in the notes
+
+The other commands below (`cloc`, `git log`, `git bisect`) are meant to be run on a
+real project of your own; they do not need any extra files from this folder.
 
 ## Build and run
 

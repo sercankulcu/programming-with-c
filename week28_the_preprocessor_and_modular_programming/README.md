@@ -4,12 +4,10 @@
 
 ## Files
 
-- `buffer.c`
-- `buffer.h`
-- `config.h`
-- `intarray.c`
-- `intarray.h`
-- `main.c`
+- `intarray.c`, `intarray.h`, `main.c` — the module and its caller; this is what `make` builds
+- `config.h` — the include-guarded header from the notes
+- `buffer.h` — the opaque-type interface (`typedef struct Buffer Buffer;`)
+- `buffer_sketch.c.txt`, `buffer_sketch.h.txt`, `config_wrong.h.txt` — fragments from the notes, kept as text to read, not to compile
 
 ## Build and run
 
