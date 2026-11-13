@@ -25,7 +25,7 @@ gcc -std=c17 -Wall -Wextra -g -fsanitize=address,undefined -o portable portable.
 
 ```bash
 ./portable | grep -A1 'first 20 bytes'
-xxd -l 20 <<< ""            # for comparison with a raw struct dump
+xxd -l 20 record.bin           # for comparison with a raw struct dump
 ```
 
 ```bash

@@ -10,7 +10,7 @@ static void swap_broken(int a, int b)
     b = temp;
 }
 
-/* The fix: three asterisks and two ampersands at the call site. */
+/* The fix: six asterisks here and two ampersands at the call site. */
 static void swap(int *a, int *b)
 {
     int temp = *a;

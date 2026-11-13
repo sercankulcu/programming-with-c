@@ -23,6 +23,6 @@ These are the commands the lecture notes ask you to run — including the ones t
 are supposed to fail.
 
 ```bash
-gcc -std=c17 -D_GNU_SOURCE -Wall -Wextra -g -o evserver evserver.c
+gcc -std=c17 -Wall -Wextra -g -o evserver evserver.c
 ./evserver 8080 &
 ```

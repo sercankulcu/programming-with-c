@@ -35,12 +35,12 @@ static bool write_sample_text(void)
     fprintf(f, "5,Linus,not-a-number\n");
 
     if (ferror(f)) {
-        perror("writing " );
+        perror(TEXT_FILE);
         fclose(f);
         return false;
     }
     if (fclose(f) != 0) {            /* the flush can fail here */
-        perror("closing " );
+        perror(TEXT_FILE);
         return false;
     }
     return true;
@@ -99,7 +99,7 @@ static size_t read_text(Record *records, size_t capacity)
 
     /* Only NOW ask which condition ended the loop. */
     if (ferror(f)) {
-        perror("reading " );
+        perror(TEXT_FILE);
     }
     fclose(f);
     return count;
@@ -167,7 +167,7 @@ int main(void)
     if (!write_sample_text()) {
         return EXIT_FAILURE;
     }
-    puts("  wrote " );
+    printf("  wrote %s\n", TEXT_FILE);
 
     puts("\n== reading it back, rejecting bad lines ==");
     Record records[16];

@@ -70,7 +70,7 @@ static double sum_soa(const Columns *c, size_t n)
 
 /* ---------- 3. what the optimizer can and cannot see ---------- */
 
-static long sum_to(long n)
+__attribute__((noinline)) static long sum_to(long n)
 {
     long total = 0;
     for (long i = 1; i <= n; i++) total += i;

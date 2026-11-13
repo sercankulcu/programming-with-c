@@ -111,7 +111,7 @@ int main(void)
            ((only_read & rw) == rw) ? "yes" : "no");
 
     puts("\n== the precedence trap ==");
-    unsigned f = 0x0C;
+    unsigned f = 0x0A;
     printf("  f & PERM_EXEC == 0    gives %u   <-- parses as f & (EXEC==0)\n",
            f & PERM_EXEC == 0);
     printf("  (f & PERM_EXEC) == 0  gives %d   <-- what you meant\n",

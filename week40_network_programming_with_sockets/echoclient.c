@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
         if (send_all(fd, line, strlen(line)) < 0) { perror("send"); break; }
 
         char reply[2048];
-        ssize_t r = recv(fd, reply, sizeof reply - 1, 0);
+        ssize_t r = recv(fd, reply, sizeof reply - 1, 0);   /* one recv per line: simplified */
         if (r < 0)  { perror("recv"); break; }
         if (r == 0) { puts("server closed the connection"); break; }
         reply[r] = '\0';

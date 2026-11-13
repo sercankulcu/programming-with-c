@@ -25,11 +25,11 @@ gcc -std=c17 -Wall -Wextra -O2 -o modern modern.c
 
 ```bash
 gcc -O2 -S modern.c -o modern.s
-sed -n '/^add_plain:/,/ret/p'    modern.s | grep -c 'xmm\|ymm'
+sed -n '/^add_plain:/,/ret/p'    modern.s | grep -c 'xmm\|ymm'   # needs add_plain non-static or noinline
 sed -n '/^add_restrict:/,/ret/p' modern.s | grep -c 'xmm\|ymm'
 ```
 
 ```bash
 gcc -O2 -S modern.c -o modern.s
-grep -B3 -A6 'observed' modern.s
+grep -B3 -A6 'observed' modern.s   # build modern.s with -fverbose-asm so local names appear
 ```

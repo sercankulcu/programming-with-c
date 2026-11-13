@@ -43,7 +43,7 @@ void uart_init(void)
 {
     UART0->CTL = 0;                     /* disable before configuring */
 
-    UART0->IBRD = 10;                   /* 115200 baud at 18.432 MHz  */
+    UART0->IBRD = 10;                   /* 115200 baud at 20 MHz  */
     UART0->FBRD = 54;
 
     /* Read-modify-write: set the word length, preserve everything else. */

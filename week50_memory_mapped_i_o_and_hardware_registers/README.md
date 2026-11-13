@@ -37,5 +37,5 @@ arm-none-eabi-objdump -d firmware.elf \
 
 ```bash
 arm-none-eabi-gcc .. -O0 .. && qemu-system-arm ..   # usually still works
-arm-none-eabi-gcc .. -O2 .. && qemu-system-arm ..   # hangs, or garbles output
+arm-none-eabi-gcc .. -O2 .. && qemu-system-arm ..   # hangs on real hardware; QEMU may not show it
 ```

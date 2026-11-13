@@ -32,5 +32,5 @@ size layout
 ```
 
 ```bash
-nm layout | grep -E ' [BDRT] ' | sort
+nm layout | grep -E ' [BbDdRrTt] ' | sort
 ```

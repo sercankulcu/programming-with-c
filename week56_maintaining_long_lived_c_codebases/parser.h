@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-/* Parse "name,value" out of line. Writes at most name_size bytes to out_name
+/* Parse "name=value" out of line. Writes at most name_size bytes to out_name
    (always terminated) and the number to out_value. Returns false and leaves
    the outputs untouched if the line does not parse. */
 bool parse_record(const char *line, char *out_name, size_t name_size,

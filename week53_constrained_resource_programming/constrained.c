@@ -123,7 +123,7 @@ static bool ring_pop(Ring *r, uint8_t *out)
 
 /* ---------- a lookup table, in flash ---------- */
 
-/* sin(x) scaled to Q16.16, 16 entries over a quarter turn.
+/* sin(x) scaled to Q16.16, 17 entries over a quarter turn.
    const keeps it in .rodata — week 52. */
 static const q16_t sine_table[17] = {
         0,  6423, 12785, 19024, 25079, 30893, 36409, 41575,

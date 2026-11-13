@@ -107,7 +107,7 @@ int main(void)
         }
     }
     array_print(&a, "final");
-    puts("  capacity doubled 2 -> 4 -> 8 -> 16: five reallocations for nine pushes");
+    puts("  capacity doubled 2 -> 4 -> 8 -> 16: three reallocations for nine pushes");
 
     int value;
     printf("  element 3  : %s", array_get(&a, 3, &value) ? "" : "refused\n");

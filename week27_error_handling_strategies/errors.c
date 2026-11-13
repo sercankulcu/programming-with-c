@@ -29,7 +29,7 @@ static const char *fc_status_name(FcStatus s)
     return "unknown";
 }
 
-/* ---------- the function with four resources ---------- */
+/* ---------- the function with three resources ---------- */
 
 /* Copies in_path to out_path, doubling every number it finds.
    Returns FC_OK on success. On failure, out_path may exist but

@@ -53,6 +53,6 @@ git config user.email "you@example.com"
 ```bash
 git status                       # what changed
 git add week03/clean.c           # stage this file
-git commit -m "Week 3: readable rewrite of the grid example"
+git commit -m "Rewrite the grid example for readability"
 git log --oneline                # what has happened so far
 ```
