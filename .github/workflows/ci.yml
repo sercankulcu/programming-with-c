@@ -70,3 +70,16 @@ jobs:
         run: git clone --depth 1 --branch "$FREERTOS_TAG" https://github.com/FreeRTOS/FreeRTOS-Kernel.git "$RUNNER_TEMP/FreeRTOS-Kernel"
       - name: Run embedded weeks under QEMU
         run: FREERTOS="$RUNNER_TEMP/FreeRTOS-Kernel" sh ci/qemu.sh
+
+  fuzz:
+    name: libFuzzer · week 55 protocol
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build the fuzz target
+        run: make -C week55_embedded_debugging_and_testing fuzz
+      - name: Fuzz for 30 seconds
+        working-directory: week55_embedded_debugging_and_testing
+        run: |
+          mkdir -p corpus
+          ./fuzz_protocol -max_total_time=30 corpus
