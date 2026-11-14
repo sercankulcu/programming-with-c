@@ -1,9 +1,9 @@
 /* hal_device.c — only this file knows about registers */
 #include "hal.h"
+#include <stddef.h>
 
 #define UART0_DR (*(volatile uint32_t *)0x4000C000u)
 #define UART0_FR (*(volatile uint32_t *)0x4000C018u)
-#define SYST_CVR (*(volatile uint32_t *)0xE000E018u)
 
 static bool dev_read(void *ctx, uint8_t *out)
 {
@@ -20,7 +20,13 @@ static void dev_write(void *ctx, uint8_t byte)
     UART0_DR = byte;
 }
 
-static uint32_t dev_ticks(void *ctx) { (void)ctx; return SYST_CVR; }
+/* Counted up by the SysTick interrupt (week 51). SYST_CVR itself counts
+   down and reloads, so now - last would be meaningless across a reload. */
+static volatile uint32_t tick_count;
+
+void SysTick_Handler(void) { tick_count++; }
+
+static uint32_t dev_ticks(void *ctx) { (void)ctx; return tick_count; }
 
 const Hal device_hal = {
     .uart_read  = dev_read,

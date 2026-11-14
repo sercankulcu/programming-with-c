@@ -7,6 +7,8 @@
 
 ## Files
 
+- `fake_hal.c`
+- `fake_hal.h`
 - `fuzz_protocol.c`
 - `hal.h`
 - `hal_device.c`
@@ -37,13 +39,13 @@ gdb-multiarch firmware.elf
 
 ```bash
 gcc -std=c17 -Wall -Wextra -g -fsanitize=address,undefined \
-    -o test_protocol test_protocol.c protocol.c
+    -o test_protocol test_protocol.c fake_hal.c protocol.c
 ./test_protocol ; echo "status $?"
 ```
 
 ```bash
 clang -g -O1 -fsanitize=fuzzer,address,undefined \
-      -o fuzz_protocol fuzz_protocol.c protocol.c
+      -o fuzz_protocol fuzz_protocol.c fake_hal.c protocol.c
 ./fuzz_protocol corpus/
 ```
 

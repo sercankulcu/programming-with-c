@@ -1,5 +1,6 @@
 /* test_protocol.c — builds and runs on the host */
 #include "protocol.h"
+#include "fake_hal.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,44 +13,6 @@ static int checks = 0, failures = 0;
         printf("  FAIL %s:%d: %s\n", __FILE__, __LINE__, #cond); }\
     else printf("  ok   %s\n", #cond);                            \
 } while (0)
-
-/* A scripted hardware layer: input from a string, output captured. */
-typedef struct {
-    const char *input;
-    size_t      input_pos;
-    char        output[1024];
-    size_t      output_len;
-    uint32_t    now;                 /* time we control exactly */
-} Fake;
-
-static bool fake_read(void *ctx, uint8_t *out)
-{
-    Fake *f = ctx;
-    if (f->input[f->input_pos] == '\0') return false;
-    *out = (uint8_t)f->input[f->input_pos++];
-    return true;
-}
-
-static void fake_write(void *ctx, uint8_t byte)
-{
-    Fake *f = ctx;
-    if (f->output_len < sizeof f->output - 1) {
-        f->output[f->output_len++] = (char)byte;
-        f->output[f->output_len] = '\0';
-    }
-}
-
-static uint32_t fake_ticks(void *ctx) { return ((Fake *)ctx)->now; }
-
-static void fake_init(Fake *f, const char *input, Hal *hal)
-{
-    memset(f, 0, sizeof *f);
-    f->input = input;
-    hal->uart_read  = fake_read;
-    hal->uart_write = fake_write;
-    hal->ticks      = fake_ticks;
-    hal->ctx        = f;
-}
 
 static void test_single_line(void)
 {

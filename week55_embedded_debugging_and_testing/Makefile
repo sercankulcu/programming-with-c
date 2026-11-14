@@ -13,13 +13,13 @@ CFLAGS  ?= -std=c17 -Wall -Wextra -Wpedantic -g
 
 all: test_protocol
 
-test_protocol: test_protocol.c protocol.c
+test_protocol: test_protocol.c fake_hal.c protocol.c
 	$(CC) $(CFLAGS) $^ -o $@
 
 run: test_protocol
 	./test_protocol
 
-fuzz: fuzz_protocol.c protocol.c
+fuzz: fuzz_protocol.c fake_hal.c protocol.c
 	clang -std=c17 -g -O1 -fsanitize=fuzzer,address,undefined $^ -o fuzz_protocol
 
 device:

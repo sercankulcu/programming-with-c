@@ -1,5 +1,6 @@
 /* fuzz_protocol.c */
 #include "protocol.h"
+#include "fake_hal.h"
 #include <string.h>
 #include <stdlib.h>
 
